@@ -36,7 +36,7 @@ public class StyleController extends BaseController {
     @ResponseBody
     ResponseVo index(Detail detail, PageVo<Detail> vo) throws Exception {
         // 查询风格的详细
-        detail.setType(ConstantType.DETAIL_STYLE);
+        detail.setType(ConstantType.DETAIL_TYPE_STYLE);
 
         vo.setEntity(detail);
         vo.setList(detailService.getStyleList(vo));

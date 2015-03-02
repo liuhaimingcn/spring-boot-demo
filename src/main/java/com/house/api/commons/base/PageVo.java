@@ -11,7 +11,7 @@ public class PageVo<T extends BaseModel> implements Serializable {
 
     private static final long serialVersionUID = 3144038956308932204L;
 
-    private static final int DEFAULT_PAGE_SIZE = 12;
+    private static final int DEFAULT_PAGE_SIZE = 10;
     public static final int PAGING_YES = 1;
     public static final int PAGING_NO = 0;
 

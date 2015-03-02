@@ -21,11 +21,11 @@ public interface ConstantType {
     /**
      * 分类:风格0
      */
-    public static Integer DETAIL_STYLE = 0;
+    public static Integer DETAIL_TYPE_STYLE = 0;
     /**
      * 分类:专题1
      */
-    public static Integer DETAIL_SPECIAL = 1;
+    public static Integer DETAIL_TYPE_SPECIAL = 1;
 
 
 }

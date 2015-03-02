@@ -38,6 +38,19 @@ public class Detail extends BaseModel{
      */
     private Integer styleType;
 
+    /**
+     * 专题主键
+     */
+    private String specialId;
+
+    public String getSpecialId() {
+        return specialId;
+    }
+
+    public void setSpecialId(String specialId) {
+        this.specialId = specialId;
+    }
+
     public String getTitle() {
         return title;
     }

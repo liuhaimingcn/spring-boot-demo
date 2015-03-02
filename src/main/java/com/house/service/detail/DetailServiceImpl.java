@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 用户信息接口实现
  * @author liuhaiming
  */
 @Service

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 用户信息接口
  * @author liuhaiming
  */
 public interface DetailService extends BaseService<Detail> {

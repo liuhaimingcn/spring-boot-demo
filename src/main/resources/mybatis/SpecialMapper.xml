@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.house.mapper.special.SpecialMapper" >
+    <resultMap id="BaseResultMap" type="com.house.api.model.Special" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+        <result column="picture" property="picture" jdbcType="VARCHAR" />
+        <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
+        <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <resultMap id="DetailResultMap" type="com.house.api.model.Special" extends="BaseResultMap">
+        <collection property="detailList" resultMap="com.house.mapper.detail.DetailMapper.BaseResultMap" columnPrefix="detail_"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, title, introduce, picture, created_on, updated_on, status
+    </sql>
+
+    <!-- 分页条件查询主题列表 -->
+    <select id="getSpecialList" parameterType="com.house.api.commons.base.PageVo" resultMap="DetailResultMap">
+        select t1.id id, t1.title title, t1.picture picture,
+               t2.id detail_id, t2.picture detail_picture
+        from (select *
+                from special
+                where status = 1
+                <if test="isPaging != 0">
+                    limit #{from},#{size}
+                </if>
+             ) t1 left join detail t2 on t1.id = t2.special_id
+        where t1.status = 1 and t2.status = 1
+    </select>
+
+    <!-- 条件查询主题总数 -->
+    <select id="getSpecialCount" resultType="long">
+        select count(1) total from special t1
+        where t1.status = 1
+    </select>
+
+    <!-- 分页条件查询某个专题内得详情 -->
+    <select id="getDetailList" parameterType="com.house.api.commons.base.PageVo" resultMap="DetailResultMap">
+        select t1.*, t2.id detail_id, t2.picture detail_picture, t2.title detail_title
+        from special t1 left join detail t2 on t1.id = t2.special_id
+        where t1.status = 1 and t2.status = 1 and t1.id = #{entity.id}
+        <if test="isPaging != 0">
+            limit #{from},#{size}
+        </if>
+    </select>
+
+    <!-- 条件查询某个专题内得详情总数 -->
+    <select id="getDetailCount" resultType="long">
+        select count(1)
+        from special t1 left join detail t2 on t1.id = t2.special_id
+        where t1.status = 1 and t2.status = 1 and t1.id = #{entity.id}
+    </select>
+
+</mapper>
