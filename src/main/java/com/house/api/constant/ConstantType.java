@@ -7,15 +7,25 @@ package com.house.api.constant;
  */
 public interface ConstantType {
 
-    //====状态
-    /**
-     * 状态:正常1
-     */
-    public static int STATUS_NOMARL = 1;
+    //======状态
     /**
      * 状态:删除0
      */
-    public static int STATUS_DELETE = 0;
+    public static Integer STATUS_DELETE = 0;
+    /**
+     * 状态:正常1
+     */
+    public static Integer STATUS_NOMARL = 1;
+
+    //======详情所属分类
+    /**
+     * 分类:风格0
+     */
+    public static Integer DETAIL_STYLE = 0;
+    /**
+     * 分类:专题1
+     */
+    public static Integer DETAIL_SPECIAL = 1;
 
 
 }

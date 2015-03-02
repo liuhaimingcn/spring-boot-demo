@@ -25,5 +25,48 @@
         #{styleType,jdbcType=INTEGER}, #{createdOn,jdbcType=TIMESTAMP})
     </insert>
 
+    <sql id="search_clause">
+        <where>
+            <if test="entity!=null">
+                <if test="entity.status != null">
+                    and t1.status = #{entity.status}
+                </if>
+                <if test="entity.styleType != null">
+                    and t1.style_type = #{entity.styleType}
+                </if>
+                <if test="entity.type != null">
+                    and t1.type = #{entity.type}
+                </if>
+                <if test="entity.status == null">
+                    and t1.status = 1
+                </if>
+            </if>
+        </where>
+    </sql>
+
+    <!-- 分页条件查询风格详情 -->
+    <select id="getStyleList" parameterType="com.house.api.commons.base.PageVo" resultType="map">
+        select t1.id id, t1.title title, t1.picture picture
+        from detail t1
+        <include refid="search_clause"/>
+        order by t1.created_on desc
+        <if test="isPaging != 0">
+            limit #{from},#{size}
+        </if>
+    </select>
+
+    <!-- 条件查询详情总数 -->
+    <select id="getStyleCount" resultType="long">
+        select count(1) total from detail t1
+        <include refid="search_clause"/>
+    </select>
+
+    <!-- 根据主键查询详情 -->
+    <select id="getById" parameterType="string" resultMap="BaseResultMap">
+        select  <include refid="Base_Column_List" />
+        from detail t1
+        where t1.id = #{id,jdbcType=VARCHAR} and t1.status = 1
+    </select>
+
 
 </mapper>
