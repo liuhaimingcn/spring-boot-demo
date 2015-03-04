@@ -48,8 +48,6 @@ public abstract class BaseServiceImpl<T extends BaseModel> implements BaseServic
 	public void add(T entity) throws Exception {
         entity.setId(UUIDUtil.generateUniqueKey());
         entity.setCreatedOn(new Date());
-        entity.setUpdatedOn(entity.getCreatedOn());
-        entity.setStatus(ConstantType.STATUS_NOMARL);
 		baseMapper.add(entity);
 	}
 

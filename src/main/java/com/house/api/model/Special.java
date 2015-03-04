@@ -13,12 +13,24 @@ public class Special extends BaseModel {
 
     private static final long serialVersionUID = -2020562266006012714L;
 
+    /**
+     * 标题
+     */
     private String title;
 
+    /**
+     * 简介
+     */
     private String introduce;
 
+    /**
+     * 主照片
+     */
     private String picture;
 
+    /**
+     * 详情
+     */
     private List<Detail> detailList;
 
     public List<Detail> getDetailList() {

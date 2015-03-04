@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.house.mapper.collect.CollectMapper" >
+    <resultMap id="BaseResultMap" type="com.house.api.model.Collect" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="accout_id" property="accoutId" jdbcType="VARCHAR" />
+        <result column="detail_id" property="detailId" jdbcType="VARCHAR" />
+        <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
+        <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, accout_id, detail_id, created_on, updated_on, status
+    </sql>
+
+    <resultMap id="DetailResultMap" type="com.house.api.model.Collect" extends="BaseResultMap">
+        <collection property="detailList" resultMap="com.house.mapper.detail.DetailMapper.BaseResultMap" columnPrefix="detail_"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.house.api.model.Collect" >
+        insert into collect (id, accout_id, detail_id, created_on)
+        values (#{id,jdbcType=VARCHAR}, #{accoutId,jdbcType=VARCHAR}, #{detailId,jdbcType=VARCHAR},
+            #{createdOn,jdbcType=TIMESTAMP})
+    </insert>
+
+    <sql id="search_clause">
+        <where>
+            <if test="entity!=null">
+                <if test="entity.status != null">
+                    and t1.status = #{entity.status}
+                </if>
+                <if test="entity.accoutId != null">
+                    and t1.accout_id = #{entity.accoutId}
+                </if>
+                <if test="entity.status == null">
+                    and t1.status = 1
+                </if>
+            </if>
+        </where>
+    </sql>
+
+    <select id="getList" parameterType="com.house.api.commons.base.PageVo" resultMap="com.house.mapper.detail.DetailMapper.BaseResultMap">
+        select t2.id id, t2.title title, t2.picture picture
+        from collect t1 left join detail t2 on t1.detail_id = t2.id
+        <include refid="search_clause"/>
+        order by t1.created_on desc
+        <if test="isPaging != 0">
+            limit #{from},#{size}
+        </if>
+    </select>
+
+    <select id="getCount" resultType="long">
+        select count(1) total
+        from collect t1 left join detail t2 on t1.detail_id = t2.id
+        <include refid="search_clause"/>
+    </select>
+
+</mapper>

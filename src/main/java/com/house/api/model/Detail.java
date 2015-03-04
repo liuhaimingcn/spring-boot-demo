@@ -3,9 +3,11 @@ package com.house.api.model;
 import com.house.api.commons.base.BaseModel;
 
 /**
+ * 详情基本信息
+ *
  * @author liuhaiming
  */
-public class Detail extends BaseModel{
+public class Detail extends BaseModel {
 
     private static final long serialVersionUID = 131853464024414923L;
     /**

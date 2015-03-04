@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.house.mapper.account.AccountMapper" >
+    <resultMap id="BaseResultMap" type="com.house.api.model.Account" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="INTEGER" />
+        <result column="openid" property="openid" jdbcType="VARCHAR" />
+        <result column="account_from" property="accountFrom" jdbcType="INTEGER" />
+        <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
+        <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name, sex, openid, account_from, created_on, updated_on, status
+    </sql>
+
+    <insert id="add" parameterType="com.house.api.model.Detail" useGeneratedKeys="true" keyProperty="id">
+        insert into account (id, name, sex, openid, account_from, created_on)
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER},
+        #{openid,jdbcType=VARCHAR}, #{accountFrom,jdbcType=INTEGER}, #{createdOn,jdbcType=TIMESTAMP})
+    </insert>
+
+</mapper>
