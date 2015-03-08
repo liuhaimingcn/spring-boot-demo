@@ -86,4 +86,15 @@ public class DetailControllerTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
+    @Test
+    public void testIndex() throws Exception {
+        MvcResult result = mockMvc.perform(
+                get("/details")
+        )
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andReturn();
+        System.out.println(result.getResponse().getContentAsString());
+    }
+
 }

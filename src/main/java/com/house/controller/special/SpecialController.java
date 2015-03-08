@@ -4,16 +4,17 @@ import com.house.api.commons.base.BaseController;
 import com.house.api.commons.base.PageVo;
 import com.house.api.commons.base.ResponseVo;
 import com.house.api.constant.ConstantType;
+import com.house.api.model.Account;
 import com.house.api.model.Detail;
 import com.house.api.model.Special;
 import com.house.api.service.detail.DetailService;
 import com.house.api.service.special.SpecialService;
+import com.house.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * @author liuhaiming
@@ -57,6 +58,22 @@ public class SpecialController extends BaseController {
         vo.setList(specialService.getDetailList(vo));
         vo.setSum(specialService.getDetailCount(special));
         return new ResponseVo(vo);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public
+    @ResponseBody
+    ResponseVo save(@RequestBody Special special) throws Exception {
+        specialService.add(special);
+        return new ResponseVo();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public
+    @ResponseBody
+    ResponseVo update(@RequestBody Special special) throws Exception {
+        specialService.modify(special);
+        return new ResponseVo();
     }
 
 

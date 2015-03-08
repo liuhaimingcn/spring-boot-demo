@@ -1,8 +1,10 @@
 package com.house.controller.detail;
 
 import com.house.api.commons.base.BaseController;
+import com.house.api.commons.base.PageVo;
 import com.house.api.commons.base.ResponseVo;
 import com.house.api.model.Detail;
+import com.house.api.model.Special;
 import com.house.api.service.detail.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,17 @@ public class DetailController extends BaseController {
 
     @Autowired
     private DetailService detailService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    ResponseVo index(Detail detail, PageVo<Detail> vo) throws Exception {
+        vo.setEntity(detail);
+        vo.setList(detailService.getList(vo));
+        vo.setSum(detailService.getCount(detail));
+        return new ResponseVo(vo);
+    }
+
 
     /**
      * 添加详情

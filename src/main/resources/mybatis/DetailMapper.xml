@@ -26,6 +26,22 @@
         #{styleType,jdbcType=INTEGER}, #{specialId,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP})
     </insert>
 
+    <select id="getList" parameterType="com.house.api.commons.base.PageVo" resultMap="BaseResultMap">
+        select id, title, type
+        from detail
+        where status = 1
+        order by created_on desc
+        <if test="isPaging != 0">
+            limit #{from},#{size}
+        </if>
+    </select>
+
+    <select id="getCount" resultType="long">
+        select count(1) total
+        from detail
+        where status = 1
+    </select>
+
     <sql id="search_clause">
         <where>
             <if test="entity!=null">
