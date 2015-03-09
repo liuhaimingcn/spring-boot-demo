@@ -30,6 +30,14 @@ public class DetailController extends BaseController {
         return new ResponseVo(vo);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public
+    @ResponseBody
+    ResponseVo modify(@RequestBody Detail detail) throws Exception {
+        detailService.modify(detail);
+        return new ResponseVo();
+    }
+
 
     /**
      * 添加详情

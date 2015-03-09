@@ -26,6 +26,11 @@ public class Detail extends BaseModel {
     private String picture;
 
     /**
+     * 专题链接
+     */
+    private String specialUrl;
+
+    /**
      * 内容
      */
     private String photos;
@@ -44,6 +49,14 @@ public class Detail extends BaseModel {
      * 专题主键
      */
     private String specialId;
+
+    public String getSpecialUrl() {
+        return specialUrl;
+    }
+
+    public void setSpecialUrl(String specialUrl) {
+        this.specialUrl = specialUrl;
+    }
 
     public String getSpecialId() {
         return specialId;

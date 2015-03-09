@@ -6,6 +6,7 @@
         <result column="title" property="title" jdbcType="VARCHAR" />
         <result column="introduce" property="introduce" jdbcType="VARCHAR" />
         <result column="picture" property="picture" jdbcType="VARCHAR" />
+        <result column="special_url" property="specialUrl" jdbcType="VARCHAR" />
         <result column="photos" property="photos" jdbcType="VARCHAR" />
         <result column="type" property="type" jdbcType="INTEGER" />
         <result column="style_type" property="styleType" jdbcType="INTEGER" />
@@ -16,15 +17,49 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, title, introduce, picture, photos, type, style_type, special_id, created_on, updated_on, status
+        id, title, introduce, picture, photos, type, special_url, style_type, special_id, created_on, updated_on, status
     </sql>
 
     <insert id="add" parameterType="com.house.api.model.Detail" useGeneratedKeys="true" keyProperty="id">
-        insert into detail (id, title, introduce, picture, photos, type, style_type, special_id, created_on)
+        insert into detail (id, title, introduce, picture, special_url, photos, type, style_type, special_id, created_on)
         values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR},
-        #{picture,jdbcType=VARCHAR}, #{photos,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+        #{picture,jdbcType=VARCHAR},  #{specialUrl,jdbcType=VARCHAR}, #{photos,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
         #{styleType,jdbcType=INTEGER}, #{specialId,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP})
     </insert>
+
+    <update id="modify" parameterType="com.house.api.model.Detail" >
+        update detail
+        <set >
+            <if test="title != null" >
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null" >
+                introduce = #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="picture != null" >
+                picture = #{picture,jdbcType=VARCHAR},
+            </if>
+            <if test="specialUrl != null" >
+                special_url = #{specialUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="photos != null" >
+                photos = #{photos,jdbcType=VARCHAR},
+            </if>
+            <if test="specialId != null" >
+                special_id = #{specialId,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="styleType != null" >
+                style_type = #{styleType,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 
     <select id="getList" parameterType="com.house.api.commons.base.PageVo" resultMap="BaseResultMap">
         select id, title, type
