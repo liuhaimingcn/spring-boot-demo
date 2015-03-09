@@ -19,13 +19,13 @@ public interface ConstantType {
 
     //======详情所属分类
     /**
-     * 分类:风格0
+     * 分类:风格1
      */
-    public static Integer DETAIL_TYPE_STYLE = 0;
+    public static Integer DETAIL_TYPE_STYLE = 1;
     /**
-     * 分类:专题1
+     * 分类:专题0
      */
-    public static Integer DETAIL_TYPE_SPECIAL = 1;
+    public static Integer DETAIL_TYPE_SPECIAL = 0;
 
 
 }
