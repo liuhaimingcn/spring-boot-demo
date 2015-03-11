@@ -20,4 +20,7 @@ public interface AccountService extends BaseService<Account> {
      * @throws Exception
      */
     public void addAccount(Account account) throws Exception;
+
+    public Account getAccountByOpenId(String openId) throws Exception;
+
 }

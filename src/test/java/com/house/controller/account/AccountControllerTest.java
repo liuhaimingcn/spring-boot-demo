@@ -55,7 +55,7 @@ public class AccountControllerTest {
         ObjectNode detail = mapper.createObjectNode();
         detail.put("name", "这是名字！");
         detail.put("sex", 1);
-        detail.put("openid", "openId!");
+        detail.put("openid", "16509041851");
         detail.put("accountFrom", 1);
 
         String result = this.mockMvc.perform(MockMvcRequestBuilders.post("/accounts", "json")

@@ -22,4 +22,10 @@
         #{openid,jdbcType=VARCHAR}, #{accountFrom,jdbcType=INTEGER}, #{createdOn,jdbcType=TIMESTAMP})
     </insert>
 
+    <select id="getAccountByOpenId" parameterType="string" resultMap="BaseResultMap">
+        select  <include refid="Base_Column_List" />
+        from account t1
+        where t1.openid = #{openid,jdbcType=VARCHAR} and t1.status = 1
+    </select>
+
 </mapper>

@@ -32,4 +32,9 @@ public class AccountServiceImpl extends BaseServiceImpl<Account> implements Acco
     public void addAccount(Account account) throws Exception {
         accountMapper.add(account);
     }
+
+    @Override
+    public Account getAccountByOpenId(String openId) throws Exception {
+        return accountMapper.getAccountByOpenId(openId);
+    }
 }

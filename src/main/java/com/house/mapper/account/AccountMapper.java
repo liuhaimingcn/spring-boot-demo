@@ -8,4 +8,5 @@ import com.house.api.model.Account;
  */
 public interface AccountMapper extends BaseMapper<Account> {
 
+    public Account getAccountByOpenId(String openId) throws Exception;
 }

@@ -33,11 +33,18 @@ public class AccountController extends BaseController {
     @RequestMapping(method = RequestMethod.POST)
     public
     @ResponseBody
-    ResponseVo save(@RequestBody Account account) throws Exception {
-        String id = UUIDUtil.generateUniqueKey();
-        account.setId(id);
-        account.setCreatedOn(new Date());
-        accountService.addAccount(account);
+    ResponseVo login(@RequestBody Account account) throws Exception {
+        String openId = account.getOpenid();
+        // 查询用户是否存在
+        Account accountNew = accountService.getAccountByOpenId(openId);
+        if (accountNew == null) {
+            String id = UUIDUtil.generateUniqueKey();
+            account.setId(id);
+            account.setCreatedOn(new Date());
+            accountService.addAccount(account);
+        } else {
+            account = accountNew;
+        }
         return new ResponseVo(account);
     }
 
