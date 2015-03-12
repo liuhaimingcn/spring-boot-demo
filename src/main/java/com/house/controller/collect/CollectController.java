@@ -3,6 +3,7 @@ package com.house.controller.collect;
 import com.house.api.commons.base.BaseController;
 import com.house.api.commons.base.PageVo;
 import com.house.api.commons.base.ResponseVo;
+import com.house.api.exception.NoticeException;
 import com.house.api.model.Account;
 import com.house.api.model.Collect;
 import com.house.api.model.Special;
@@ -55,7 +56,14 @@ public class CollectController extends BaseController {
     public
     @ResponseBody
     ResponseVo save(@RequestBody Collect collect) throws Exception {
-        collectService.add(collect);
+        // 收藏过的不能再被收藏
+        Collect newCollect = collectService.getByAcoountIdAndDetailId(collect);
+        if (newCollect == null) {
+            collectService.add(collect);
+        } else {
+            throw new NoticeException("您已经收藏过了!");
+        }
+
         return new ResponseVo();
     }
 

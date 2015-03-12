@@ -8,4 +8,5 @@ import com.house.api.model.Collect;
  */
 public interface CollectMapper extends BaseMapper<Collect> {
 
+    public Collect getByAcoountIdAndDetailId(Collect collect) throws Exception;
 }

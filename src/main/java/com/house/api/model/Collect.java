@@ -16,7 +16,7 @@ public class Collect extends BaseModel {
     /**
      * 用户主键
      */
-    private String accoutId;
+    private String accountId;
 
     /**
      * 详情主键
@@ -28,12 +28,12 @@ public class Collect extends BaseModel {
      */
     private List<Detail> detailList;
 
-    public String getAccoutId() {
-        return accoutId;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccoutId(String accoutId) {
-        this.accoutId = accoutId == null ? null : accoutId.trim();
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getDetailId() {

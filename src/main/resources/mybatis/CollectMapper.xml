@@ -3,7 +3,7 @@
 <mapper namespace="com.house.mapper.collect.CollectMapper" >
     <resultMap id="BaseResultMap" type="com.house.api.model.Collect" >
         <id column="id" property="id" jdbcType="VARCHAR" />
-        <result column="accout_id" property="accoutId" jdbcType="VARCHAR" />
+        <result column="account_id" property="accountId" jdbcType="VARCHAR" />
         <result column="detail_id" property="detailId" jdbcType="VARCHAR" />
         <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
         <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
@@ -11,7 +11,7 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, accout_id, detail_id, created_on, updated_on, status
+        id, account_id, detail_id, created_on, updated_on, status
     </sql>
 
     <resultMap id="DetailResultMap" type="com.house.api.model.Collect" extends="BaseResultMap">
@@ -19,8 +19,8 @@
     </resultMap>
 
     <insert id="add" parameterType="com.house.api.model.Collect" >
-        insert into collect (id, accout_id, detail_id, created_on)
-        values (#{id,jdbcType=VARCHAR}, #{accoutId,jdbcType=VARCHAR}, #{detailId,jdbcType=VARCHAR},
+        insert into collect (id, account_id, detail_id, created_on)
+        values (#{id,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{detailId,jdbcType=VARCHAR},
             #{createdOn,jdbcType=TIMESTAMP})
     </insert>
 
@@ -30,8 +30,8 @@
                 <if test="entity.status != null">
                     and t1.status = #{entity.status}
                 </if>
-                <if test="entity.accoutId != null">
-                    and t1.accout_id = #{entity.accoutId}
+                <if test="entity.accountId != null">
+                    and t1.account_id = #{entity.accountId}
                 </if>
                 <if test="entity.status == null">
                     and t1.status = 1
@@ -41,7 +41,7 @@
     </sql>
 
     <select id="getList" parameterType="com.house.api.commons.base.PageVo" resultMap="com.house.mapper.detail.DetailMapper.BaseResultMap">
-        select t2.id id, t2.title title, t2.picture picture
+        select t2.id id, t2.title title, t2.picture picture, t2.type type
         from collect t1 left join detail t2 on t1.detail_id = t2.id
         <include refid="search_clause"/>
         order by t1.created_on desc
@@ -54,6 +54,12 @@
         select count(1) total
         from collect t1 left join detail t2 on t1.detail_id = t2.id
         <include refid="search_clause"/>
+    </select>
+
+    <select id="getByAcoountIdAndDetailId" parameterType="com.house.api.model.Collect" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from collect
+        where status = 1 and account_id = #{accountId,jdbcType=VARCHAR} and detail_id = #{detailId,jdbcType=VARCHAR}
     </select>
 
 </mapper>

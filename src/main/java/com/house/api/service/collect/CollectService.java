@@ -11,4 +11,5 @@ import com.house.api.model.Collect;
 public interface CollectService extends BaseService<Collect> {
 
 
+    public Collect getByAcoountIdAndDetailId(Collect collect) throws Exception;
 }

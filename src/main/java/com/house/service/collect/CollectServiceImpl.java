@@ -25,4 +25,8 @@ public class CollectServiceImpl extends BaseServiceImpl<Collect> implements Coll
     }
 
 
+    @Override
+    public Collect getByAcoountIdAndDetailId(Collect collect) throws Exception {
+        return collectMapper.getByAcoountIdAndDetailId(collect);
+    }
 }

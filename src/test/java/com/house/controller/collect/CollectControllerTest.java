@@ -53,7 +53,7 @@ public class CollectControllerTest {
     @Test
     public void testIndex() throws Exception {
         MvcResult result = mockMvc.perform(
-                get("/collects").param("accoutId","560279e071e144ed8872edf4fee6a37e")
+                get("/collects").param("accountId","33705ca7701647398c556d89b2184688")
         )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
@@ -69,8 +69,8 @@ public class CollectControllerTest {
     @Test
     public void testAdd() throws Exception {
         ObjectNode detail = mapper.createObjectNode();
-        detail.put("accoutId", "560279e071e144ed8872edf4fee6a37e");
-        detail.put("detailId", "08817756db464bb78d8816bdd019da45");
+        detail.put("accountId", "560279e071e144ed8872edf4fee6a37e");
+        detail.put("detailId", "08817756d3b464bb78d8816bdd019da4");
 
         String result = this.mockMvc.perform(MockMvcRequestBuilders.post("/collects", "json")
                 .characterEncoding("utf-8").contentType(MediaType.APPLICATION_JSON).content(detail.toString().getBytes()))
