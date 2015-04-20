@@ -11,20 +11,21 @@
         <result column="type" property="type" jdbcType="INTEGER" />
         <result column="style_type" property="styleType" jdbcType="INTEGER" />
         <result column="special_id" property="specialId" jdbcType="VARCHAR" />
+        <result column="single_id" property="singleId" jdbcType="VARCHAR" />
         <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
         <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
         <result column="status" property="status" jdbcType="INTEGER" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, title, introduce, picture, photos, type, special_url, style_type, special_id, created_on, updated_on, status
+        id, title, introduce, picture, photos, type, special_url, style_type, special_id, single_id, created_on, updated_on, status
     </sql>
 
     <insert id="add" parameterType="com.house.api.model.Detail" useGeneratedKeys="true" keyProperty="id">
-        insert into detail (id, title, introduce, picture, special_url, photos, type, style_type, special_id, created_on)
+        insert into detail (id, title, introduce, picture, special_url, photos, type, style_type, special_id, single_id, created_on)
         values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR},
         #{picture,jdbcType=VARCHAR},  #{specialUrl,jdbcType=VARCHAR}, #{photos,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
-        #{styleType,jdbcType=INTEGER}, #{specialId,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP})
+        #{styleType,jdbcType=INTEGER}, #{specialId,jdbcType=VARCHAR}, #{singleId,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP})
     </insert>
 
     <update id="modify" parameterType="com.house.api.model.Detail" >
@@ -47,6 +48,9 @@
             </if>
             <if test="specialId != null" >
                 special_id = #{specialId,jdbcType=VARCHAR},
+            </if>
+            <if test="singleId != null" >
+                single_id = #{singleId,jdbcType=VARCHAR},
             </if>
             <if test="type != null" >
                 type = #{type,jdbcType=INTEGER},

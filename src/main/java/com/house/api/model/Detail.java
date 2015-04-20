@@ -30,6 +30,8 @@ public class Detail extends BaseModel {
      */
     private String specialUrl;
 
+    private String singleId;
+
     /**
      * 内容
      */
@@ -49,6 +51,14 @@ public class Detail extends BaseModel {
      * 专题主键
      */
     private String specialId;
+
+    public String getSingleId() {
+        return singleId;
+    }
+
+    public void setSingleId(String singleId) {
+        this.singleId = singleId;
+    }
 
     public String getSpecialUrl() {
         return specialUrl;
