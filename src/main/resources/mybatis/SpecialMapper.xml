@@ -56,7 +56,7 @@
                     limit #{from},#{size}
                 </if>
              ) t1 left join detail t2 on t1.id = t2.special_id
-        where t1.status = 1
+        where t1.status = 1 and t2.status = 1
     </select>
 
     <!-- 条件查询主题总数 -->
@@ -69,7 +69,7 @@
     <select id="getDetailList" parameterType="com.house.api.commons.base.PageVo" resultMap="DetailResultMap">
         select t1.*, t2.id detail_id, t2.picture detail_picture, t2.title detail_title
         from special t1 left join detail t2 on t1.id = t2.special_id
-        where t1.status = 1 and t1.id = #{entity.id}
+        where t1.status = 1 and t1.id = #{entity.id} and t2.status = 1
         <if test="isPaging != 0">
             limit #{from},#{size}
         </if>
@@ -79,7 +79,7 @@
     <select id="getDetailCount" resultType="long">
         select count(1)
         from special t1 left join detail t2 on t1.id = t2.special_id
-        where t1.status = 1 and t1.id = #{entity.id}
+        where t1.status = 1 and t1.id = #{entity.id} and t2.status = 1
     </select>
 
 
