@@ -1,3 +1,7 @@
+# 日志
+logging:
+  config: "classpath:log4j2/log4j2-dev.yml"
+
 # mongodb 数据库配置
 mongodbConfig:
   # 阿里云推荐两个使用两个节点
@@ -5,9 +9,29 @@ mongodbConfig:
   port1: 27017
   host2: "127.0.0.1"
   port2: 27017
-  username: root
-  password: root
+  username: test
+  password: test
   database: chat
 
-logging:
-  config: "classpath:log4j2/log4j2-test.yml"
+# mysql 数据库配置
+mysqlConfig:
+  url: "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8"
+  username: root
+  password: root
+
+# redis 数据库配置
+redisConfig:
+  host: "127.0.0.1"
+  port: 6379
+  password: "123456"
+  # 最大实例数
+  maxTotal: 200
+  # 最大空闲实例数
+  maxIdle: 50
+  # (创建实例时)最大等待时间
+  maxWaitMillis: 10000
+  # (创建实例时)是否验证
+  testOnBorrow: true
+  timeOut: 100000
+  # 用户用到的库
+  userDB: 2
