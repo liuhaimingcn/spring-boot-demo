@@ -1,0 +1,45 @@
+configuration:
+  loggers:
+    root:
+      level: INFO
+      appender-ref:
+        - ref: lvInfo
+        - ref: lvError
+  appenders:
+    RollingFile:
+      - name: lvInfo
+        fileName: "/haiyue/workspace/logs/demo/demo-info.log"
+        filePattern: "/haiyue/workspace/logs/demo/$${date:yyyy-MM}/info/demo-info-%d{yyyy-MM-dd}-%i.log.gz"
+        ThresholdFilter:
+            level: INFO
+            onMatch: ACCEPT
+            onMismatch: DENY
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%-d{yyyy-MM-dd HH:mm:ss} %level %m --- [%c{10}:%line]%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100M
+          TimeBasedTriggeringPolicy:
+            modulate: true
+            interval: 1
+        DefaultRolloverStrategy:
+          max: 100
+      - name: lvError
+        fileName: "/haiyue/workspace/logs/demo/demo-error.log"
+        filePattern: "/haiyue/workspace/logs/demo/$${date:yyyy-MM}/error/demo-error-%d{yyyy-MM-dd}-%i.log.gz"
+        ThresholdFilter:
+            level: ERROR
+            onMatch: ACCEPT
+            onMismatch: DENY
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%-d{yyyy-MM-dd HH:mm:ss} %level %m --- [%c{10}:%line]%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100M
+          TimeBasedTriggeringPolicy:
+            modulate: true
+            interval: 1
+        DefaultRolloverStrategy:
+          max: 100

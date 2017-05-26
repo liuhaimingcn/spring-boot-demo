@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  # INTRANET_IP 配置的在环境变量中,绑定内网IP,禁止外网访问,默认开放.
+  address: ${INTRANET_IP:0.0.0.0}
+  tomcat:
+    # tomcat最大线程数，默认为200
+    max-threads: 1000
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+
+spring:
+  profiles:
+    # SERVER_EVN 配置在环境变量中,根据不同的环境选不同的配置文件,默认为dev
+    active: ${SERVER_EVN:dev}, redis

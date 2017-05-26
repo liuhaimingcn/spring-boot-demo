@@ -1,0 +1,14 @@
+# mongodb 数据库配置
+mongodbConfig:
+  # 阿里云推荐两个使用两个节点
+  host1: "127.0.0.1"
+  port1: 27017
+  host2: "127.0.0.1"
+  port2: 27017
+  username: test
+  password: test
+  database: chat
+
+# 日志
+logging:
+  config: "classpath:log4j2/log4j2-dev.yml"

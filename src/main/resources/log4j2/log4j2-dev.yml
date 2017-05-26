@@ -1,0 +1,42 @@
+configuration:
+  loggers:
+    root:
+      level: DEBUG
+      appender-ref:
+        - ref: stdout
+        - ref: lvDebug
+    logger:
+      - name: org.springframework
+        level: INFO
+      - name: org.mongodb.driver
+        level: INFO
+      - name: org.apache.http
+        level: INFO
+  appenders:
+    Console:
+      name: stdout
+      target: SYSTEM_OUT
+      # 控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）
+      ThresholdFilter:
+        level: DEBUG
+        onMatch: ACCEPT
+        onMismatch: DENY
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%-d{yyyy-MM-dd HH:mm:ss} %level %m --- [%c{10}:%line]%n"
+
+    RollingFile:
+      name: lvDebug
+      fileName: logs/demo_debug.log
+      filePattern: "logs/demo_debug-%i.log"
+      ThresholdFilter:
+          level: DEBUG
+          onMatch: ACCEPT
+          onMismatch: DENY
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%-d{yyyy-MM-dd HH:mm:ss} %level %m --- [%c{10}:%line]%n"
+      SizeBasedTriggeringPolicy:
+        size: 20M
+      DefaultRolloverStrategy:
+        max: 5
