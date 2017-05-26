@@ -16,6 +16,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Properties;
+import java.util.UUID;
 
 /**
  * 工具类
@@ -149,6 +150,7 @@ public class Utils {
 	}
 
 	public static void main(String[] args) {
-		Utils.sendEmail("测试邮件", "啦啦啦啦,我是测试!!!");
+//		Utils.sendEmail("测试邮件", "啦啦啦啦,我是测试!!!");
+		System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
 	}
 }

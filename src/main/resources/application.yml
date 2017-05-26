@@ -11,4 +11,8 @@ server:
 spring:
   profiles:
     # SERVER_EVN 配置在环境变量中,根据不同的环境选不同的配置文件,默认为dev
-    active: ${SERVER_EVN:dev}, redis
+    active: ${SERVER_EVN:dev}, druid
+
+mybatisConfig:
+  typeAliasesPackage: com.haiyue.demo.model
+  mapperLocations: classpath:mybatis/*.xml

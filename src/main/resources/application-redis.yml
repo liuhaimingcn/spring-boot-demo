@@ -1,6 +1,0 @@
-product:
-  box:
-    all: cinema, video, video>cartoon, video>movie, video>TV_series
-    video: cinema, video, video>cartoon, video>movie, video>TV_series
-  flow:
-    all: cinema, video, video>cartoon, video>movie, video>TV_series

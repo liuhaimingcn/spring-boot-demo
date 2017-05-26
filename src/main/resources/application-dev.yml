@@ -1,3 +1,7 @@
+# 日志
+logging:
+  config: "classpath:log4j2/log4j2-dev.yml"
+
 # mongodb 数据库配置
 mongodbConfig:
   # 阿里云推荐两个使用两个节点
@@ -9,6 +13,8 @@ mongodbConfig:
   password: test
   database: chat
 
-# 日志
-logging:
-  config: "classpath:log4j2/log4j2-dev.yml"
+# mysql 数据库配置
+mysqlConfig:
+  url: "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8"
+  username: root
+  password: root
