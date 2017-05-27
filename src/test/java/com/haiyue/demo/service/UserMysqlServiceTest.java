@@ -51,8 +51,6 @@ public class UserMysqlServiceTest {
 		Assert.assertNotNull(user);
 	}
 
-	// TODO 
-
 	// 在每个测试方法后执行，在方法执行完成后要做的事情
 	@After
 	public void after() {
