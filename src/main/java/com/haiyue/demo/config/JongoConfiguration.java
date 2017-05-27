@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ Created by liuhaiming on 2016/10/18.
+ * @ Created by liuhaiming on 2017/5/25.
  */
 @Configuration
 @ComponentScan({"com.haiyue.demo.models.yml"})

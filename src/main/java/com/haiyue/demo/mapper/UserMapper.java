@@ -4,7 +4,7 @@ package com.haiyue.demo.mapper;
 import com.haiyue.demo.models.User;
 
 /**
- * @author liuhaiming
+ * @ Created by liuhaiming on 2017/5/25.
  */
 public interface UserMapper {
 

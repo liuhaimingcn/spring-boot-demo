@@ -4,6 +4,8 @@ import com.haiyue.demo.common.BaseException;
 
 /**
  * 业务逻辑错误
+ *
+ * @ Created by liuhaiming on 2017/5/25.
  */
 public class BusinessException extends BaseException {
 

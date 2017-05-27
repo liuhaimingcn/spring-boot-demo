@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * @ Created by liuhaiming on 2016/10/18.
+ * @ Created by liuhaiming on 2017/5/25.
  */
 @Configuration
 @ComponentScan({"com.haiyue.demo.models.yml"})

@@ -5,6 +5,9 @@ import com.haiyue.demo.constant.ResponseStatus;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @ Created by liuhaiming on 2017/5/25.
+ */
 public class ResponseVo implements Serializable {
 
 	private static final long serialVersionUID = 6372741107786945383L;

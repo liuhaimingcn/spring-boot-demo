@@ -1,5 +1,6 @@
 package com.haiyue.demo.constant;
 
+
 public enum ResponseStatus {
     SUCCESS(200, "执行成功！"),
     ERROR(500, "服务器未知错误！"),

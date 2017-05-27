@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 import javax.sql.DataSource;
 
 /**
- * @ Created by liuhaiming on 2016/10/18.
+ * @ Created by liuhaiming on 2017/5/25.
  */
 @Configuration
 @MapperScan(basePackages = "com.haiyue.demo.mapper")
